@@ -13,17 +13,26 @@ var hbs = require("hbs")
 
 hbs.registerHelper('getTable', (data) => {
   let table = "";
-  table += "<tr>"
-  for(key in data){
-	table += `<td>${data.firstName}`
-	table += `<td>${data.lastName}`
-	table += `<td>${data.department}`
-	table += `<td>${data.startDate.toLocaleString()}`
-	table += `<td>${data.jobTitle}`
-	table += `<td>${data.salary}`
+  for(let i = 0; i < data.length; i++) {
+    table += "<tr>"
+    table += `<td>${data[i].firstName}</td>`
+    table += `<td>${data[i].lastName}</td>`
+    table += `<td>${data[i].department}</td>`
+    table += `<td>${data[i].startDate.toLocaleString()}</td>`
+    table += `<td>${data[i].jobTitle}</td>`
+    table += `<td>${data[i].salary}</td>`
+    table += `<td><a href="/addEmployee/${data[i]._id}">Update Employee</td>`
+    table += `<td><a href="/delete/${data[i]._id}">Delete Employee</td>`
+    table += "</tr>"
   }
-  table += "</tr>"
   return table
+});
+
+hbs.registerHelper('ifCond', function(v1, v2, options) {
+  if(v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
 });
 
 // view engine setup

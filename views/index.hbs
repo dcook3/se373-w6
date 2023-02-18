@@ -1,7 +1,23 @@
 <h3>Employees View</h3>
 
-<table>
-    <tr>
-        <td></td>
-    </tr>
+{{#if deleted}}
+<div class="alert alert-danger" role="alert">
+  Employee {{{deleted.firstName}}} {{{deleted.lastName}}} was deleted
+</div>
+{{/if}}
+
+<table class="table table-striped">
+    <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Department</th>
+        <th>Start Date</th>
+        <th>Job Title</th>
+        <th>Salary</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </thead>
+    <tbody>
+        {{{getTable data}}}
+    </tbody>
 </table>

@@ -1,0 +1,50 @@
+<h2>{{{title}}}</h2>
+
+<form action="../addEmployee/{{data._id}}" method="post" class="form mx-2 p-3 border border-primary border-2 border-rounded">
+    <div class="form-group">
+        <label for="firstName" class="form-label">First Name:</label>
+        <input name="firstName" type="text" class="form-control" value="{{data.firstName}}">
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input name="lastName" type="text" class="form-control" value="{{data.lastName}}">
+    </div>
+    <div class="form-group">
+        <label for="department" class="form-label">Department:</label>
+        
+        <select name="department" class="form-control">
+            {{#ifCond data.department "IT"}}
+            <option selected value="IT">IT</option>
+            {{else}}
+            <option value="IT">IT</option>
+            {{/ifCond}}
+
+            {{#ifCond data.department "Accounting"}}
+            <option selected value="Accounting">Accounting</option>
+            {{else}}
+            <option value="Accounting">Accounting</option>
+            {{/ifCond}}
+
+            {{#ifCond data.department "Sales"}}
+            <option selected value="Sales">Sales</option>
+            {{else}}
+            <option value="Sales">Sales</option>
+            {{/ifCond}}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="startDate" class="form-label">Start Date:</label>
+        <input name="startDate" type="date" class="form-control" value="{{date}}">
+    </div>
+    <div class="form-group">
+        <label for="jobTitle" class="form-label">Job Title:</label>
+        <input name="jobTitle" type="text" class="form-control" value="{{data.jobTitle}}">
+    </div>
+    <div class="form-group">
+        <label for="salary" class="form-label">Salary:</label>
+        <input name="salary" type="number" class="form-control" value="{{data.salary}}">
+    </div>
+    <div class="mx-auto mt-2">
+        <button type="submit" class="btn btn-primary">Update Employee</button>
+    </div>
+</form>
